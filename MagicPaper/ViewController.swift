@@ -76,11 +76,13 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             videoNode.play()
             
-            let videoScene = SKScene(size: CGSize(width: 854, height: 480))
+            let videoScene = SKScene(size: CGSize(width: 480, height: 360))
 
+            videoNode.position = CGPoint(x: videoScene.size.width / 2, y: videoScene.size.height / 2)
+            
+            videoNode.yScale = -1.0
+            
             videoScene.addChild(videoNode)
-            
-            
             
             
             
@@ -88,7 +90,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             let plane = SCNPlane(width: imageAnchor.referenceImage.physicalSize.width, height: imageAnchor.referenceImage.physicalSize.height)
             
-            plane.firstMaterial?.diffuse.contents = UIColor(white: 1.0, alpha: 0.5)
+            plane.firstMaterial?.diffuse.contents = videoScene
             
             let planeNode = SCNNode(geometry: plane)
             
@@ -98,7 +100,7 @@ class ViewController: UIViewController, ARSCNViewDelegate {
             
             
             if imageAnchor.referenceImage.name == "harrypotter" {
-                        print("Image Detected")
+            //print("Image Detected")
             
             }
         }
